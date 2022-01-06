@@ -15,4 +15,6 @@
            <button type="button" class="btn btn-info">アンケート結果</button>
            </div>
     </div>
+    {{-- ユーザ登録ページへのリンク --}}
+            {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
 @endsection
