@@ -37,13 +37,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    public function experiences()
-    {
-        return $this->hasMany(Experience::class);
-    }
     
-     public function loadRelationshipCounts()
-    {
-        $this->loadCount('experiences');
-    }
+   
 }

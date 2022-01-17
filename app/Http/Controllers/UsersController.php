@@ -7,36 +7,59 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class UsersController extends Controller
 {
-    public function index()
+   public function index()
     {
-        // ユーザ一覧をidの降順で取得
-        $users = User::orderBy('id', 'desc')->paginate(10);
+         $data = [];
+        if (\Auth::check()) {
+            // 認証済みユーザ（閲覧者）を取得
+            $user = \Auth::user();
+           
+            $data = [
+                'user' => $user,
+             
+            ];
+        }
 
-        // ユーザ一覧ビューでそれを表示
-        return view('users.index', [
-            'users' => $users,
-        ]);
+        // Welcomeビューでそれらを表示
+        return view('welcome', $data);
     }
     
-   
-    
-        public function show($id)
+     public function edit($id)
     {
-        // idの値でユーザを検索して取得
-        $user = User::findOrFail($id);
+       $user = User::findOrFail($id);
 
-        // 関係するモデルの件数をロード
-        $user->loadRelationshipCounts();
-
-        // ユーザの投稿一覧を作成日時の降順で取得
-        $experiences = $user->experiences()->orderBy('created_at', 'desc')->paginate(10);
-
-        // ユーザ詳細ビューでそれらを表示
-        return view('users.show', [
+        return view('users.edit', [
             'user' => $user,
-            'experience' => $experiences,
         ]);
+    }
+     public function update(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'nullable',
+        ]);
+        
+        
+        $user = User::findOrFail($id);
+        
+        $user-> name = $request->name;
+        $user-> age = $request->age;
+        
+        $user-> region =$request->region;
+        $user-> email = $request->email;
+        $user->password = $request->password;
+        
+        if ($request->hasFile('image')) { // リクエストにファイルが存在する場合
+    $user->image = $request->image;
+}
+       
+       
+        $user->save();
+ 
+    return redirect('/');
     }
 }

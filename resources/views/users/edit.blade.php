@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">
-        <h1>ユーザー登録</h1>
+
+　　
+　　<div class="text-center">
+    <h1>{{ $user->name}} のプロフィール編集</h1>
     </div>
 
-    <div class="row">
+    　<div class="row">
         <div class="col-sm-6 offset-sm-3">
+            
+            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
 
-            {!! Form::open(['route' => 'signup.post']) !!}
+               {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'ニックネーム') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -24,7 +28,6 @@
             <div class="form-group">
                 <label for="inputFile">プロフィール画像</label>
                 <input type="file" class="form-control-file" id="inputFile">
-               
             </div>
              
                                
@@ -49,8 +52,10 @@
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('登録', ['class' => 'btn btn-info btn-block']) !!}
+                {!! Form::submit('更新', ['class' => 'btn btn-info btn-block']) !!}
+
             {!! Form::close() !!}
         </div>
     </div>
+
 @endsection

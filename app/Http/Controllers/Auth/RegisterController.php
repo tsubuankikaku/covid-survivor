@@ -69,8 +69,9 @@ class RegisterController extends Controller
     {
         
      if (request()->hasFile('image')) {
-          $image = request()->file('image')->getClientOriginalName();
-            request()->file('image')->storeAs('avatars', $image, 'public');
+          
+             $image = $request->file('file');
+             Storage::disk('s3')->putFile('/', $image);
      }
         return User::create([
             'name' => $data['name'],
