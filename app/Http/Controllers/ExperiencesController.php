@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Experience;
+use App\Like;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class ExperiencesController extends Controller
 {
     /**
@@ -13,7 +18,12 @@ class ExperiencesController extends Controller
      */
     public function index()
     {
-        //
+        $experiences = Experience::all();
+
+        // 体験談一覧ビューでそれを表示
+        return view('experiences.index', [
+            'experiences' => $experiences,
+        ]);
     }
 
     /**
@@ -23,7 +33,12 @@ class ExperiencesController extends Controller
      */
     public function create()
     {
-        //
+        $experience = new Experience;
+
+        // 体験談投稿ビューを表示
+        return view('experiences.create', [
+            'experience' => $experience,
+        ]);
     }
 
     /**
@@ -34,7 +49,14 @@ class ExperiencesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->experiences()->create([
+            'content' => $request->content,
+        ]);
+
+       
+     return redirect()->route('experiences.index');
+        
+
     }
 
     /**
@@ -45,8 +67,14 @@ class ExperiencesController extends Controller
      */
     public function show($id)
     {
-        //
+            // idの値で体験談を検索して取得
+        $experience = Experience::findOrFail($id);
+        $like=Like::where('experience_id', $experience->id)->where('user_id', auth()->user()->id)->first();
+
+        // 体験談詳細ビューでそれを表示
+        return view('experiences.show', compact('experience', 'like'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -79,6 +107,12 @@ class ExperiencesController extends Controller
      */
     public function destroy($id)
     {
-        //
+         // idの値で体験談を検索して取得
+        $experience = Experience::findOrFail($id);
+        // 体験談を削除
+        $experience->delete();
+
+        // トップページへリダイレクトさせる
+        return redirect('/');
     }
 }

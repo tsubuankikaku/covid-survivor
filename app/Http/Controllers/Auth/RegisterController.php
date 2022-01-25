@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'age'=>['required','string','max: 150'],
-            'image'=>['file|mimes:jpeg,png,jpg,bmb|max:2048'],
+            'image'=>['file|max:10000|mimes:jpeg,png,jpg,pdf'],
             'region'=>['required','string','max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -67,19 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
-     if (request()->hasFile('image')) {
-          
-             $image = $request->file('file');
-             Storage::disk('s3')->putFile('/', $image);
-     }
+        $path = null;
+         if ($data['image']) { // ファイルが送信されてきた場合
+        // ファイルをS3へ保存し、戻り値のパスを受け取る
+        $path = \Storage::disk('s3')->putFile('/', $data['image']);
+}
+
+    
         return User::create([
             'name' => $data['name'],
             'age' => $data['age'],
-            'image' => '',
+            'image' => $path,
             'region' => $data['region'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+    
+    
 }

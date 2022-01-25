@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
 
-            {!! Form::open(['route' => 'signup.post']) !!}
+           {!! Form::open(['route' => 'signup.post', 'files' => true]) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'ニックネーム') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -23,7 +23,7 @@
         
             <div class="form-group">
                 <label for="inputFile">プロフィール画像</label>
-                <input type="file" class="form-control-file" id="inputFile">
+                <input type="file" class="form-control-file" id="inputFile" name="image">
                
             </div>
              

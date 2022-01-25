@@ -10,7 +10,7 @@
     　<div class="row">
         <div class="col-sm-6 offset-sm-3">
             
-            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
+            {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put','files' => 'true']) !!}
 
                {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
@@ -27,7 +27,7 @@
         
             <div class="form-group">
                 <label for="inputFile">プロフィール画像</label>
-                <input type="file" class="form-control-file" id="inputFile">
+                <input type="file" class="form-control-file" id="inputFile" name="image">
             </div>
              
                                

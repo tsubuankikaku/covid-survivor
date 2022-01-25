@@ -5,9 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class Experience extends Model
 {
      protected $fillable = ['content'];
+     
+     
 
     /**
      * この投稿を所有するユーザ。（ Userモデルとの関係を定義）
@@ -15,5 +18,10 @@ class Experience extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    
+      
+    public function likes() {
+        return $this->hasMany(Like::class);
     }
 }

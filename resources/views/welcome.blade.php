@@ -3,10 +3,10 @@
  @section('content')
  
  @if (Auth::check())
-       
-  <div class="card text-center">
-      <img src="{{$user->image}}" class="rounded-circle">
-      
+     
+  <div class="card text-center mx-auto border border-0" style="width: 20rem;">
+     <img src="{{ Storage::disk('s3')->url($user->image) }}" class="rounded-circle">
+     
   <div class="card-header">
     {{ Auth::user()->name }}
   </div>
@@ -16,12 +16,12 @@
     <p class="card-title">メール：{{ Auth::user()->email}}</p>
      </div>
    <div class="col text-center">
-    　　　<button type="button" class="btn btn-info">体験談投稿</button>
+    　　{!! link_to_route('experiences.create', '体験談投稿', [], ['class' => 'btn btn-info']) !!}
            <button type="button" class="btn btn-info">アンケート</button>
  　　</div>
   
 </div>
-           
+          
     @else
         
 

@@ -30,4 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('experiences', 'ExperiencesController');
 });
 
+// いいねボタン
+Route::get('/reply/like/{experience}', 'LikesController@like')->name('like');
+Route::get('/reply/unlike/{experience}', 'LikesController@unlike')->name('unlike');
 
