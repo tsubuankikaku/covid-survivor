@@ -15,7 +15,7 @@ class AddColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('age');
-            $table->string('image')->default('/storage/no_image.jpg');
+            $table->string('image')->nullable();
             $table->string('region');
             
         });

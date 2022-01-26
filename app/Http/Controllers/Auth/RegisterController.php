@@ -68,19 +68,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $path = null;
-         if ($data['image']) { // ファイルが送信されてきた場合
-        // ファイルをS3へ保存し、戻り値のパスを受け取る
-        $path = \Storage::disk('s3')->putFile('/', $data['image']);
-}
-
-    
+         if (array_key_exists('image', $data)) { // ファイルが送信されてきた場合
+             // ファイルをS3へ保存し、戻り値のパスを受け取る
+             $path = \Storage::disk('s3')->putFile('/', $data['image']);
+         }else{
+             $path = 'asset/no_image.jpg';
+         }
+         
+         
         return User::create([
             'name' => $data['name'],
             'age' => $data['age'],
-            'image' => $path,
+            'image' =>$path,
             'region' => $data['region'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            
+            
         ]);
     }
     

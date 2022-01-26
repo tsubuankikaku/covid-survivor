@@ -11,18 +11,26 @@ use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
-     public function like(Experience $experience, Request $request){
-        $like=New Like();
-        $like->experience_id=$like->id;
-        $like->user_id=Auth::user()->id;
-        $like->save();
-        return back();
-    }  
     
-     public function unlike(Experience $experience, Request $request){
-        $user=Auth::user()->id;
-        $like=Like::where('experience_id', $experience->id)->where('user_id', $user)->first();
-        $nice->delete();
-        return back();
-    }
+   
+   
+    public function like($id)
+  {
+    Like::create([
+      'experience_id' => $id,
+      'user_id' => Auth::id(),
+    ]);
+
+    
+    return redirect()->back();
+  }
+    
+      public function unlike($id)
+  {
+    $like = Like::where('experience_id', $id)->where('user_id', Auth::id())->first();
+    $like->delete();
+
+
+    return redirect()->back();
+  }
 }

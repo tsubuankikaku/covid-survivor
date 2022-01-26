@@ -17,7 +17,8 @@
      </div>
    <div class="col text-center">
     　　{!! link_to_route('experiences.create', '体験談投稿', [], ['class' => 'btn btn-info']) !!}
-           <button type="button" class="btn btn-info">アンケート</button>
+    　　{!! link_to_route('surveys.index', 'アンケート', [], ['class' => 'btn btn-info']) !!}
+          
  　　</div>
   
 </div>
@@ -37,15 +38,16 @@
       
     </div>
     
-    <div>
+    
          <div class="col text-center">
              
-           <button type="button" class="btn btn-info">体験談</button>
-           <button type="button" class="btn btn-info">アンケート</button>
-           <button type="button" class="btn btn-info">アンケート結果</button>
+          {!! link_to_route('experiences.create', '体験談投稿', [], ['class' => 'btn btn-info']) !!}
+    　  　{!! link_to_route('surveys.index', 'アンケート', [], ['class' => 'btn btn-info']) !!}
+    　  　{!! link_to_route('surveys.index', 'アンケート結果', [], ['class' => 'btn btn-info']) !!}
+          
           </div>
           
           
-    </div>
+    
  @endif
 @endsection

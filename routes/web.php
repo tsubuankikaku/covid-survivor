@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 // いいねボタン
-Route::get('/reply/like/{experience}', 'LikesController@like')->name('like');
-Route::get('/reply/unlike/{experience}', 'LikesController@unlike')->name('unlike');
+Route::get('/like/{experience}', 'LikesController@like')->name('like');
+Route::get('/unlike/{experience}', 'LikesController@unlike')->name('unlike');
 
+
+Route::get('/surveys', 'SurveysController@index')->name('surveys.index');

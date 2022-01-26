@@ -13,15 +13,15 @@
           </div>
          </div>
            
-     {!! Form::close() !!}
+    
     <span>
 <img src="{{asset('img/likebtn.png')}}" width="30px">
  
-<!-- もし$likeがあれば＝ユーザーが「いいね」をしていたら -->
+<!-- もし$likeがあれば＝ユーザーが「役に立った」をしていたら -->
 @if($like)
-<!-- 「いいね」取消用ボタンを表示 -->
+<!-- 「役に立った」取消用ボタンを表示 -->
 	<a href="{{ route('unlike', $experience) }}" class="btn btn-success btn-sm">
-		いいね
+		役に立った！
 		<!-- 「いいね」の数を表示 -->
 		<span class="badge">
 			{{ $experience->likes->count() }}
@@ -29,9 +29,9 @@
 		</span>
 	</a>
 @else
-<!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+<!-- まだユーザーが「役に立った」をしていなければ、「役に立った」ボタンを表示 -->
 	<a href="{{ route('like', $experience) }}" class="btn btn-secondary btn-sm">
-		いいね
+		役に立った！
 		<!-- 「いいね」の数を表示 -->
 		<span class="badge">
 			{{ $experience->likes->count() }}
