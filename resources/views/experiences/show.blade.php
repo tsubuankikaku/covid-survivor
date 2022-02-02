@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="text-center">
-    <h3>体験談詳細ページ</h3>
-		<div class="card">
-          <div class="card-body">
-     　 	<p class="card-text">{{ $experience->content }}</p>
-          </div>
-         </div>
+<div class="row">  
+	<div class="col-sm">
+		<div class="text-center">
+		    <h3>体験談詳細ページ</h3>
+				<div class="card">
+        		<div class="card-body">
+     　 		<p class="card-text-center">{{ $experience->content }}</p>
+        		</div>
+        		 </div>
            
 	<span>
 	<img src="{{asset('img/likebtn.png')}}" width="30px">
@@ -35,16 +37,18 @@
 		  <div>
              @if (Auth::id() == $experience->user_id)
               {{-- 投稿削除ボタンのフォーム --}}
-              <div class = "row">
-              	<div class = "ml-auto"
+             <div class="row">　
+              	<div style ="mr-auto">
               {!! Form::open(['route' => ['experiences.destroy', $experience->id], 'method' => 'delete']) !!}
               {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
               {!! Form::close() !!}
                 </div>
-              </div>
+              </div>  
+             
               @endif
           </div>
-    	
+		</div>
+	</div>
 </div>
 
 @endsection

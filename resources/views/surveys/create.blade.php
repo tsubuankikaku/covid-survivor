@@ -3,7 +3,7 @@
 @section('content')
     <div class="text-center">
         <h1>アンケート</h1>
-    </div>
+  　 </div>  
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
@@ -11,7 +11,7 @@
             {!! Form::model($survey,['route' => ['surveys.store']]) !!}
                 <div class="form-group">
                     {!! Form::label('job', '職業') !!}
-                    {{Form::select('job', ['サービス業', '医療関係者', '公務員','無職','主婦','学生','自営業','教育関連'])}}
+                    {{Form::select('job', ['サービス業', '医療関係者','主婦','学生','教育関連'])}}
                 </div>
                 
                 <div class="form-group">
@@ -45,15 +45,7 @@
                     {{Form::select('symptom_after', ['味覚嗅覚障害', '息切れ', '疲労感','全て','その他'])}}
                 </div>
                 
-                 <div class="form-group">
-                    {!! Form::label('reaction', '周りの人の反応') !!}
-                    {!! Form::text('reaction', null, ['class' => 'form-control']) !!}
-                </div>
                 
-                 <div class="form-group">
-                    {!! Form::label('anything', 'その他何でも伝えたいこと') !!}
-                    {!! Form::text('anything', null, ['class' => 'form-control']) !!}
-                </div>
                 
                 {!! Form::submit('回答を送信', ['class' => 'btn btn-info btn-block']) !!}
             {!! Form::close() !!}
@@ -61,6 +53,6 @@
             
         </div>
     </div>
-           
+          
     
     @endsection

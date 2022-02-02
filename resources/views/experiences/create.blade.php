@@ -6,7 +6,7 @@
     
 
     <div class="row">
-        <div class="col-6 offset-sm-3">
+        <div class="col-sm">
             {!! Form::model($experience, ['route' => 'experiences.store']) !!}
 
                 <div class="form-group">

@@ -12,7 +12,7 @@
         <?php if ($index % 3 == 0) { ?> <div class="row"> <?php } ?>
         <div class="col-sm-4">
          <div class="card">
-             <div class="card-header"> {{ $experience->user->name }} {{$experience->user->age}}歳　</div>
+             <div class="card-header bg-info text-white"> {{ $experience->user->name }} {{$experience->user->age}}歳　</div>
      　    <div class="card-body">
             <p class="card-text text-truncate">{{ $experience->content }}</p>
             {!! link_to_route('experiences.show', 'Read More', ['experience' => $experience->id]) !!}

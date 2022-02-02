@@ -22,8 +22,6 @@ class CreateSurveysTable extends Migration
             $table->string('duration');
             $table->string('after_effect');
             $table->string('symptom_after');
-            $table->string('reaction');
-            $table->string('anything');
             $table->timestamps();
         });
     }

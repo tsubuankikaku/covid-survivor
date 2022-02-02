@@ -55,8 +55,7 @@ class SurveysController extends Controller
         $survey->duration = $request->duration;
         $survey->after_effect = $request->after_effect;
         $survey->symptom_after = $request->symptom_after;
-        $survey->reaction = $request->reaction;
-        $survey->anything = $request->anything;
+        
         $survey->save();
 
         

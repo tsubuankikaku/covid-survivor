@@ -4,7 +4,7 @@
  
  @if (Auth::check())
     <div class="row">  
-     <div class="col-sm">
+     <div class="col-sm-6 offset-sm-3">
       <div class="card text-center mx-auto border border-0" >
       <img src="{{ Storage::disk('s3')->url($user->image) }}" class="rounded-circle">
      
@@ -17,11 +17,11 @@
          <p class="card-title">メール：{{ Auth::user()->email}}</p>
         </div>
     　   
-    　   <div="row">
+    　  
     　   {!! link_to_route('experiences.create', '体験談投稿', [], ['class' => 'btn btn-info']) !!}
     　   {!! link_to_route('surveys.create', 'アンケート', [], ['class' => 'btn btn-info']) !!}
      　  {!! link_to_route('surveys.index', 'アンケート結果', [], ['class' => 'btn btn-info']) !!}
-    　   </div> 
+    　   
     　  
     　   　</div>
     　　</div>

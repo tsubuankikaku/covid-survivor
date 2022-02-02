@@ -10,7 +10,7 @@ class JobsController extends Controller
     // チャート表示用
     public function chart(){
         $jobs = Job::all();
-        return view('answer.jobanswer', compact('jobs'));
+        return view('job.answer', compact('jobs'));
     }
     
     // アンケート結果をデータベースに保存用
