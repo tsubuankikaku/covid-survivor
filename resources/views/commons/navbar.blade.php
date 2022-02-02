@@ -13,20 +13,16 @@
                 @if (Auth::check())
                     
                      
-                    <li class="nav-item">{!! link_to_route('users.edit','編集', ['user' => Auth::id()], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('experiences.create','体験談投稿', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('experiences.index','体験談一覧', [], ['class' => 'nav-link']) !!}</li>
                    
                     <li class="nav-item dropdown ">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         
                         <ul class="dropdown-menu dropdown-menu-right">
-                                
-                                <li class="dropdown-divider"></li>
-                                {{-- ログアウトへのリンク --}}
-                                <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
-                                 {{-- 体験談投稿ページへのリンク --}}
-                                <li class="dropdown-item">{!! link_to_route('experiences.create', '体験談投稿') !!}</li>
-                                 
-                            </ul>
+                            <li class="dropdown-item">{!! link_to_route('users.edit','プロフィール編集', ['user' => Auth::id()]) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                        </ul>
                     </li>
                 @else
                     {{-- ユーザ登録ページへのリンク --}}

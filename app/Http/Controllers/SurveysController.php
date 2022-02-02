@@ -15,7 +15,12 @@ class SurveysController extends Controller
      */
     public function index()
     {
-        return view('surveys.index');
+         $surveys = Survey::all();
+
+        // アンケート結果ビューでそれを表示
+        return view('surveys.index', [
+            'surveys' => $surveys,
+        ]);
     }
 
     /**
@@ -23,24 +28,14 @@ class SurveysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create()
     {
-       /* $survey = new Survey;    
-       
-        return view('surveys.create', [
-            'survey' => $survey,
-        ]); 
+     
+      $survey = new Survey;
       
-      return Survey::create([
-            'job' => $data['job'],
-            'route' => $data['route'],
-            'symptom' => $data['symptom'],
-            'level' => $data['level'],
-            'after_effect' => $data['after_effect'],
-            'symptom_after' => $data['symptom_after'],
-            'reaction' => $data['reaction'],
-            'anything' => $data['anything'],
-            ]);*/
+       return view('surveys.create', [
+            'survey' => $survey,
+        ]);
     }
 
     /**
@@ -51,7 +46,21 @@ class SurveysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $survey = new Survey;
+        
+        $survey->job = $request->job;
+        $survey->route = $request->route;
+        $survey->symptom = $request->symptom;
+        $survey->level = $request->level;
+        $survey->duration = $request->duration;
+        $survey->after_effect = $request->after_effect;
+        $survey->symptom_after = $request->symptom_after;
+        $survey->reaction = $request->reaction;
+        $survey->anything = $request->anything;
+        $survey->save();
+
+        
+        return view('surveys.index');
     }
 
     /**
@@ -62,12 +71,7 @@ class SurveysController extends Controller
      */
     public function show($id)
     {
-         $survey = Survey::findOrFail($id);
-        
-
-        // 体験談詳細ビューでそれを表示
-        return view('surveys.show', compact('survey'));
-    
+         //
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Experience;
 use App\Like;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ExperiencesController extends Controller
 {
@@ -49,6 +50,10 @@ class ExperiencesController extends Controller
      */
     public function store(Request $request)
     {
+         $request->validate([
+            'content' => 'required|max:255',
+        ]);
+        
         $request->user()->experiences()->create([
             'content' => $request->content,
         ]);
@@ -112,7 +117,7 @@ class ExperiencesController extends Controller
         // 体験談を削除
         $experience->delete();
 
-        // トップページへリダイレクトさせる
+        //体験談一覧へ
         return redirect('/');
     }
 }

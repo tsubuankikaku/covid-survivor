@@ -1,60 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">
-        <h1>アンケート</h1>
-    </div>
+ <h1>アンケート結果</h1>
+  <canvas id="myPieChart"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
-    <div class="row">
-        <div class="col-sm-6 offset-sm-3">
+  <script>
+  var ctx = document.getElementById("myPieChart");
+  var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["サービス業", "医療関係者", "無職", "学生"],
+      datasets: [{
+          backgroundColor: [
+              "#BB5179",
+              "#FAFF67",
+              "#58A27C",
+              "#3C00FF"
+          ],
+          data: [38, 31, 21, 10]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '職業'
+      }
+    }
+  });
+  </script>
+  
+  
+   
+</body>
+</html>
 
-            {!! Form::open(['route' => ['surveys.index']]) !!}
-                <div class="form-group">
-                    {!! Form::label('job', '職業') !!}
-                    {{Form::select('job', ['サービス業', '医療関係者', '公務員','無職','主婦','学生','自営業','教育関連'])}}
-                </div>
-                
-                <div class="form-group">
-                    {!! Form::label('route', '感染経路') !!}
-                    {{Form::select('route', ['職場', '家庭内', '不明','会食'])}}
-                </div>
-             
-                               
-                <div class="form-group">
-                    {!! Form::label('symptom', '主な症状') !!}
-                    {{Form::select('symptom', ['無症状','咳', '発熱', '息切れ','肺炎','胃腸症状','味覚嗅覚障害','風邪のような症状','全て','その他'])}}
-                </div>
+　 
+@endsection
 
-                <div class="form-group">
-                    {!! Form::label('level', '症状の重さ') !!}
-                    {{Form::select('level', ['軽症', '中等症', '重症'])}}
-                </div>
-                
-                 <div class="form-group">
-                    {!! Form::label('after_effect', '後遺症の有無') !!}
-                    {{Form::select('after_effect', ['有り','無し'])}}
-                </div>
-
- 　　　　　　　　　　　<div class="form-group">
-                    {!! Form::label('symptom_after', '後遺症の内容') !!}
-                    {{Form::select('symptom_after', ['味覚嗅覚障害', '息切れ', '疲労感','全て','その他'])}}
-                </div>
-                
-                 <div class="form-group">
-                    {!! Form::label('reaction', '周りの人の反応') !!}
-                    {!! Form::text('reaction', null, ['class' => 'form-control']) !!}
-                </div>
-                
-                 <div class="form-group">
-                    {!! Form::label('anything', 'その他何でも伝えたいこと') !!}
-                    {!! Form::text('anything', null, ['class' => 'form-control']) !!}
-                </div>
-                
-                
-
-                {!! Form::submit('回答を送信', ['class' => 'btn btn-info btn-block']) !!}
-            {!! Form::close() !!}
-        </div>
-    </div>
-    
-    @endsection

@@ -23,7 +23,7 @@
             {!! Form::close() !!}
 
             {{-- ユーザ登録ページへのリンク --}}
-            <p class="mt-2">New user? {!! link_to_route('signup.get', '登録はこちらから') !!}</p>
+            <p class="mt-2">あなたもコロナサバイバー？{!! link_to_route('signup.get', '登録はこちらから') !!}</p>
         </div>
     </div>
 @endsection

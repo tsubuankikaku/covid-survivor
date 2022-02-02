@@ -17,7 +17,10 @@
                 {!! Form::submit('投稿', ['class' => 'btn btn-info btn-block']) !!}
 
             {!! Form::close() !!}
+            
+              
         </div>
     </div>
     </div>
+ 
 @endsection
