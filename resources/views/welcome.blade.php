@@ -38,12 +38,13 @@
         </div>
     </div>
 
-    <div class="col text-center">
+      
+        <div class="text-center">
           {!! link_to_route('experiences.create', '体験談投稿', [], ['class' => 'btn btn-info']) !!}
     　  　{!! link_to_route('surveys.create', 'アンケート', [], ['class' => 'btn btn-info']) !!}
     　  　{!! link_to_route('surveys.index', 'アンケート結果', [], ['class' => 'btn btn-info']) !!}
-          
-    </div>
+    　  　</div>
+      
           
  @endif
 @endsection
