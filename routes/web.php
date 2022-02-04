@@ -34,5 +34,9 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/like/{experience}', 'LikesController@like')->name('like');
 Route::get('/unlike/{experience}', 'LikesController@unlike')->name('unlike');
 
-Route::resource('/surveys', 'SurveysController', ['only' => ['index', 'create', 'store']]);
+//Route::resource('/surveys', 'SurveysController', ['only' => ['index', 'create', 'store']]);
+
+
+Route::get('/job/chart', 'JobsController@chart')->name('job.chart');
+Route::post('/job/vote', 'JobsController@vote')->name('job.vote');
 

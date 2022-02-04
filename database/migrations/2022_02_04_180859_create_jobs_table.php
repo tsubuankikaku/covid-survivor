@@ -19,6 +19,7 @@ class CreateJobsTable extends Migration
             $table->integer('number');
             $table->timestamps();
         });
+    
     }
 
     /**

@@ -106,4 +106,20 @@ class SurveysController extends Controller
     {
         //
     }
+     public function googlePieChart()
+    {
+        $data = DB::table('surveys')
+           ->select(
+            DB::raw('job as job'),
+            DB::raw('count(*) as number'))
+           ->groupBy('job')
+           ->get();
+        $array[] = ['Job', 'Number'];
+        foreach($data as $key => $value)
+        {
+          $array[++$key] = [$value->job, $value->number];
+        }
+        return view('google-pie-chart')->with('job', json_encode($array));
+    }
+    
 }
