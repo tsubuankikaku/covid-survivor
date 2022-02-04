@@ -10,11 +10,11 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-	<div class="row">
-		<div class = "col-sm-6 offset-sm-3">
+
     <title>アンケート</title>
     
     <h1>アンケート</h1>
+    <p>※今後アンケートコンテンツを増やす予定です。</p>
 
     <!-- Scripts -->
     <script src="https://www.gstatic.com/charts/loader.js"></script>
@@ -100,8 +100,7 @@
 	<div id="chart_div" style="height:500px;width:800px;"></div>
 
 </div>
-</div>
-</div>
+
 </body>
 </html>
 
