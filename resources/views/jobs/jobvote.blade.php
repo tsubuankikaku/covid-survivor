@@ -5,10 +5,11 @@
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+	<script src="https://www.gstatic.com/charts/loader.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src='http://www.google.com/jsapi'></script>
-
+   
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,11 +17,6 @@
     
     <h1>アンケート</h1>
     <p>※今後アンケートコンテンツを増やす予定です。</p>
-
-    <!-- Scripts -->
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-
-    
 
 </head>
 <script>
