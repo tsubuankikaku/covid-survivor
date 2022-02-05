@@ -5,13 +5,15 @@
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<script src="https://www.gstatic.com/charts/loader.js"></script>
+
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
 
     <title>アンケート</title>
     
@@ -88,7 +90,7 @@
 			</div>
 
 			<div class="text-right">
-				<button type=”submit” class="btn btn-danger btn-primary">投票する</button>
+				<button type=”submit” class="btn btn-danger btn-primary">回答</button>
 			</div>
 			
 		</form>
